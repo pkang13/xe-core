@@ -317,18 +317,18 @@ class TemplateHandlerWrapper extends \TemplateHandler
 {
     private $inst;
 
-    function __construct() 
-	{
+    function __construct()
+    {
         $this->inst = parent::getInstance();
     }
 
     public function init($tpl_path, $tpl_filename, $tpl_file = '') 
-	{
+    {
         call_user_func(array($this->inst, 'init'), $tpl_path, $tpl_filename, $tpl_file);
     }
 
     public function parse($buff = null) 
-	{
+    {
         return call_user_func(array($this->inst, 'parse'), $buff);
     }
 }
