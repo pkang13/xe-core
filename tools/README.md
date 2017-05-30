@@ -1,14 +1,14 @@
 # Tools
 
 ## Build
-XE패키징을 위해 grunt.js를 이용한 Task로 작성되어 있으며 *nix 환경에서 Node를 구동할 수 있어야 한다.
+XE 패키징을 위해 grunt.js를 이용한 Task로 작성되어 있으며 *nix 환경에서 Node를 구동할 수 있어야 한다.
 
 ### 의존 패키지 설치 (Mac)
 
 ### 1. brew
-http://brew.sh 페이지의 'Install Homebrew'를 참고하여 설치
+http://brew.sh 페이지의 'Install Homebrew'를 참고하여 설치.
 
-### 2. node.js
+### 2. node.j
 > brew install node
 
 ### 3. grunt-cli
