@@ -3,7 +3,8 @@
  * @brief javascript code for autolink addon
  * @author NAVER (developers@xpressengine.com)
  */
-(function($){
+(function($)
+ {
 	var protocol_re = '(https?|ftp|news|telnet|irc|mms)://';
 	var domain_re   = '(?:[\\w\\-]+\\.)+(?:[a-z]+)';
 	var max_255_re  = '(?:1[0-9]{2}|2[0-4][0-9]|25[0-5]|[1-9]?[0-9])';
@@ -17,10 +18,12 @@
 
 	var AutoLink = xe.createPlugin("autolink", {
 		targets : [],
-		init : function() {
+		init : function() 
+		{
 			this.targets = [];
 		},
-		API_ONREADY : function() {
+		API_ONREADY : function() 
+		{
 			var thisPlugin = this;
 
 			// extract target text nodes
@@ -30,7 +33,8 @@
 				thisPlugin.cast('AUTOLINK', [this]);
 			});
 		},
-		API_AUTOLINK : function(oSender, params) {
+		API_AUTOLINK : function(oSender, params) 
+		{
 			var textNode = params[0];
 			if(!$(textNode).parent().length || $(textNode).parent().get(0).nodeName.toLowerCase() == 'a') return;
 			var content  = textNode.nodeValue;
@@ -44,7 +48,8 @@
 			params[0] = dummy.next('a');
 			dummy.remove();
 		},
-		extractTargets : function(obj) {
+		extractTargets : function(obj) 
+		{
 			var thisPlugin = this;
 			var wrap = $('.xe_content', obj);
 			if(wrap.length) {
@@ -61,7 +66,8 @@
 				// FIX ME : When this meanless code wasn't executed, url_regex do not run correctly. why?
 				url_regex.exec('');
 
-				if(this.nodeType == 3) { // text node
+				if(this.nodeType == 3) 
+				{ // text node
 					var content = this.nodeValue;
 
 					if(content.length < 5) return;
@@ -69,7 +75,9 @@
 					if(!/(http|https|ftp|news|telnet|irc|mms):\/\//i.test(content)) return;
 
 					thisPlugin.targets.push(this);
-				} else {
+				}
+				else 
+				{
 					thisPlugin.extractTargets(this);
 				}
 			});
