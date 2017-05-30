@@ -57,7 +57,7 @@ window.Modernizr = (function( window, document, undefined ) {
                 body = document.body,
                 fakeBody = body || document.createElement('body');
 
-      if ( parseInt(nodes, 10) ) 
+      if( parseInt(nodes, 10) ) 
 	  {
           while ( nodes-- ) 
 		  {
@@ -71,7 +71,7 @@ window.Modernizr = (function( window, document, undefined ) {
       div.id = mod;
           (body ? div : fakeBody).innerHTML += style;
       fakeBody.appendChild(div);
-      if ( !body ) 
+      if( !body ) 
 	  {
                 fakeBody.style.background = '';
                 fakeBody.style.overflow = 'hidden';
@@ -81,10 +81,10 @@ window.Modernizr = (function( window, document, undefined ) {
       }
 
       ret = callback(div, rule);
-        if ( !body ) {
+        if( !body ) {
           fakeBody.parentNode.removeChild(fakeBody);
           docElement.style.overflow = docOverflow;
-      } else {
+      } else{
           div.parentNode.removeChild(div);
       }
 
@@ -109,15 +109,15 @@ window.Modernizr = (function( window, document, undefined ) {
 
             var isSupported = eventName in element;
 
-        if ( !isSupported ) {
-                if ( !element.setAttribute ) {
+        if( !isSupported ) {
+                if( !element.setAttribute ) {
             element = document.createElement('div');
           }
-          if ( element.setAttribute && element.removeAttribute ) {
+          if( element.setAttribute && element.removeAttribute ) {
             element.setAttribute(eventName, '');
             isSupported = is(element[eventName], 'function');
 
-                    if ( !is(element[eventName], 'undefined') ) {
+                    if( !is(element[eventName], 'undefined') ) {
               element[eventName] = undefined;
             }
             element.removeAttribute(eventName);
@@ -133,7 +133,7 @@ window.Modernizr = (function( window, document, undefined ) {
 
     _hasOwnProperty = ({}).hasOwnProperty, hasOwnProp;
 
-    if ( !is(_hasOwnProperty, 'undefined') && !is(_hasOwnProperty.call, 'undefined') ) {
+    if( !is(_hasOwnProperty, 'undefined') && !is(_hasOwnProperty.call, 'undefined') ) {
       hasOwnProp = function (object, property) {
         return _hasOwnProperty.call(object, property);
       };
@@ -145,12 +145,12 @@ window.Modernizr = (function( window, document, undefined ) {
     }
 
 
-    if (!Function.prototype.bind) {
+    if(!Function.prototype.bind) {
       Function.prototype.bind = function bind(that) {
 
         var target = this;
 
-        if (typeof target != "function") {
+        if(typeof target != "function") {
             throw new TypeError();
         }
 
