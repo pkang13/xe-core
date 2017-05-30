@@ -57,8 +57,10 @@ window.Modernizr = (function( window, document, undefined ) {
                 body = document.body,
                 fakeBody = body || document.createElement('body');
 
-      if ( parseInt(nodes, 10) ) {
-                      while ( nodes-- ) {
+      if ( parseInt(nodes, 10) ) 
+	  {
+          while ( nodes-- ) 
+		  {
               node = document.createElement('div');
               node.id = testnames ? testnames[nodes] : mod + (nodes + 1);
               div.appendChild(node);
@@ -69,7 +71,8 @@ window.Modernizr = (function( window, document, undefined ) {
       div.id = mod;
           (body ? div : fakeBody).innerHTML += style;
       fakeBody.appendChild(div);
-      if ( !body ) {
+      if ( !body ) 
+	  {
                 fakeBody.style.background = '';
                 fakeBody.style.overflow = 'hidden';
           docOverflow = docElement.style.overflow;
