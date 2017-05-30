@@ -55,7 +55,8 @@ class menuAdminController extends menu
 		$this->setTemplatePath($this->module_path.'tpl');
 	}
 
-	function __construct() {
+	function __construct() 
+	{
 		$this->homeMenuCacheFile = _XE_PATH_ . $this->homeMenuCacheFile;
 	}
 
@@ -511,7 +512,8 @@ class menuAdminController extends menu
 		$args->menu_item_srl = getNextSequence();
 		$args->listorder = -1*$args->menu_item_srl;
 		$output = executeQuery('menu.insertMenuItem', $args);
-		if(!$output->toBool()) return $output;
+		if(!$output->toBool()) 
+			return $output;
 
 		$oDB->commit();
 
