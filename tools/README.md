@@ -8,7 +8,7 @@ XE 패키징을 위해 grunt.js를 이용한 Task로 작성되어 있으며 *nix
 ### 1. brew
 http://brew.sh 페이지의 'Install Homebrew'를 참고하여 설치.
 
-### 2. node.j
+### 2. node.js
 > brew install node
 
 ### 3. grunt-cli
