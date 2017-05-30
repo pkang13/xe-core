@@ -32,12 +32,12 @@ build 명령으로 zip, tgz 포맷으로 패키징을 수행하며 지정한 대
 
 > grunt build:`old_tag`:`current_tag`
 
-이와 같이 지정하면 `old_tag`로부터 `current_tag` 사이의 변경된 파일만을 묶은 `xe.current_tag.changed.*` 파일과 `xe.current_tag.*`파일을 생성한다.
+이와 같이 지정하면 `old_tag`로부터 `current_tag`사이의 변경된 파일만을 묶은 `xe.current_tag.changed.*`파일과 `xe.current_tag.*`파일을 생성한다.
 
 `from`을 생략하여 `build:master`(master는 branch이다)와 같이 지정하면 `master`의 최신 상태로 빌드하며 changed 파일을 생성하지 않는다.
 
 ### Build 수행 시 포함하는 패키지
-Build 수행 시 일부 확장 기능을 가져와 함게 패키징한다. 지정한 각 저장소의 master 브랜치로부터 코드를 가져오므로 **Build 수행 전에 각 저장소의 master 상태를 확인하도록 한다.**
+Build 수행 시 일부 확장 기능을 가져와 함께 패키징한다. 지정한 각 저장소의 master 브랜치로부터 코드를 가져오므로 **Build 수행 전에 각 저장소의 master 상태를 확인하도록 한다.**
 
 * board 모듈
  *  https://github.com/xpressengine/xe-module-board
