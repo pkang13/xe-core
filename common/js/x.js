@@ -5,27 +5,34 @@
  **/
 function xDeprecate(funcName) {
 	var msg = 'DEPRECATED : '+funcName+'() is deprecated function.';
-	if (typeof console == 'object' && typeof console.log == 'function') {
+	if (typeof console == 'object' && typeof console.log == 'function') 
+	{
 		console.log(msg);
 	}
 }
 
 var xOp7Up,xOp6Dn,xIE4Up,xIE4,xIE5,xIE6,xNN4,xUA=navigator.userAgent.toLowerCase();
-if(window.opera){
+if(window.opera)
+{
 	var i=xUA.indexOf('opera');
-	if(i!=-1){
+	if(i!=-1)
+	{
 		var v=parseInt(xUA.charAt(i+6));
 		xOp7Up=v>=7;
 		xOp6Dn=v<7;
 	}
 }
-else if(navigator.vendor!='KDE' && document.all && xUA.indexOf('msie')!=-1){
+else if(navigator.vendor!='KDE' && document.all && xUA.indexOf('msie')!=-1)
+{
 	xIE4Up=parseFloat(navigator.appVersion)>=4;
 	xIE4=xUA.indexOf('msie 4')!=-1;
 	xIE5=xUA.indexOf('msie 5')!=-1;
 	xIE6=xUA.indexOf('msie 6')!=-1;
 }
-else if(document.layers){xNN4=true;}
+else if(document.layers)
+{
+	xNN4=true;
+}
 var xMac=xUA.indexOf('mac')!=-1;
 var xFF=xUA.indexOf('firefox')!=-1;
 
@@ -33,53 +40,94 @@ var xFF=xUA.indexOf('firefox')!=-1;
 function xAddEventListener(e,eT,eL,cap)
 {
 	xDeprecate('xAddEventListener');
-	if(!(e=xGetElementById(e))) return;
+	if(!(e=xGetElementById(e))) 
+		return;
 	eT=eT.toLowerCase();
-	if((!xIE4Up && !xOp7Up) && e==window) {
-		if(eT=='resize') { window.xPCW=xClientWidth(); window.xPCH=xClientHeight(); window.xREL=eL; xResizeEvent(); return; }
-		if(eT=='scroll') { window.xPSL=xScrollLeft(); window.xPST=xScrollTop(); window.xSEL=eL; xScrollEvent(); return; }
+	if((!xIE4Up && !xOp7Up) && e==window) 
+	{
+		if(eT=='resize')
+		{ 
+			window.xPCW=xClientWidth(); 
+			window.xPCH=xClientHeight(); 
+			window.xREL=eL; 
+			xResizeEvent(); 
+			return; 
+		}
+		if(eT=='scroll') 
+		{
+			window.xPSL=xScrollLeft(); 
+			window.xPST=xScrollTop(); 
+			window.xSEL=eL; 
+			xScrollEvent();
+			return; 
+		}
 	}
 	var eh='e.on'+eT+'=eL';
-	if(e.addEventListener) e.addEventListener(eT,eL,cap);
-	else if(e.attachEvent) e.attachEvent('on'+eT,eL);
+	if(e.addEventListener) 
+		e.addEventListener(eT,eL,cap);
+	else if(e.attachEvent) 
+		e.attachEvent('on'+eT,eL);
 	else eval(eh);
 }
 // called only from the above
 function xResizeEvent()
 {
 	xDeprecate('xResizeEvent');
-	if (window.xREL) setTimeout('xResizeEvent()', 250);
+	if (window.xREL) 
+		setTimeout('xResizeEvent()', 250);
 	var cw = xClientWidth(), ch = xClientHeight();
-	if (window.xPCW != cw || window.xPCH != ch) { window.xPCW = cw; window.xPCH = ch; if (window.xREL) window.xREL(); }
+	if (window.xPCW != cw || window.xPCH != ch) 
+	{
+		window.xPCW = cw; 
+		window.xPCH = ch; 
+		if (window.xREL)
+		{
+			window.xREL(); 
+		}
+	}
 }
 
 function xScrollEvent()
 {
 	xDeprecate('xScrollEvent');
-	if (window.xSEL) setTimeout('xScrollEvent()', 250);
+	if (window.xSEL) 
+		setTimeout('xScrollEvent()', 250);
 	var sl = xScrollLeft(), st = xScrollTop();
-	if (window.xPSL != sl || window.xPST != st) { window.xPSL = sl; window.xPST = st; if (window.xSEL) window.xSEL(); }
+	if (window.xPSL != sl || window.xPST != st) 
+	{
+		window.xPSL = sl; 
+		window.xPST = st; 
+		if (window.xSEL) 
+		{
+			window.xSEL();
+		}
+	}
 }
 
 function xAppendChild(oParent, oChild)
 {
 	xDeprecate('xAppendChild');
-	if (oParent.appendChild) return oParent.appendChild(oChild);
-	else return null;
+	if (oParent.appendChild) 
+		return oParent.appendChild(oChild);
+	else 
+		return null;
 }
 
 function xClientHeight()
 {
 	xDeprecate('xClientHeight');
 	var h=0;
-	if(xOp6Dn) h=window.innerHeight;
+	if(xOp6Dn) 
+		h=window.innerHeight;
 	else if(document.compatMode == 'CSS1Compat' && !window.opera && document.documentElement && document.documentElement.clientHeight)
 		h=document.documentElement.clientHeight;
 	else if(document.body && document.body.clientHeight)
 		h=document.body.clientHeight;
-	else if(xDef(window.innerWidth,window.innerHeight,document.width)) {
+	else if(xDef(window.innerWidth,window.innerHeight,document.width)) 
+	{
 		h=window.innerHeight;
-		if(document.width>window.innerWidth) h-=16;
+		if(document.width>window.innerWidth) 
+			h-=16;
 	}
 	return h;
 }
@@ -660,8 +708,10 @@ function xZIndex(e,uZ)
 {
 	xDeprecate('xZIndex');
 	if(!(e=xGetElementById(e))) return 0;
-	if(e.style && xDef(e.style.zIndex)) {
-		if(xNum(uZ)) e.style.zIndex=uZ;
+	if(e.style && xDef(e.style.zIndex)) 
+	{
+		if(xNum(uZ)) 
+			e.style.zIndex=uZ;
 		uZ=parseInt(e.style.zIndex);
 	}
 	return uZ;
@@ -670,6 +720,7 @@ function xZIndex(e,uZ)
 function xStopPropagation(evt)
 {
 	xDeprecate('xStopPropagation');
-	if (evt && evt.stopPropagation) evt.stopPropagation();
+	if (evt && evt.stopPropagation) 
+		evt.stopPropagation();
 	else if (window.event) window.event.cancelBubble = true;
 }
