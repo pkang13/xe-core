@@ -38,7 +38,8 @@ var calledArgs = null;
 						$('#captcha_layer form')
 						.submit(function(e){
 							e.preventDefault();
-							if(!$('#secret_text').val()){
+							if(!$('#secret_text').val())
+							{
 								$(this).find('input[type=text]').val('').focus();
 								return false;
 							}
@@ -56,13 +57,15 @@ var calledArgs = null;
 			var body    = $(document.body);
 			var captchaIma;
 
-			if (!captchaXE) {
+			if (!captchaXE) 
+			{
 				var fc_isIE  = (navigator.appVersion.indexOf("MSIE") != -1) ? true : false;
 				var fc_isWin = (navigator.appVersion.toLowerCase().indexOf("win") != -1) ? true : false;
 				var fc_isOpera = (navigator.userAgent.indexOf("Opera") != -1) ? true : false;
 				var _swfURL_ = request_uri + 'addons/captcha/swf/play.swf';
 
-				if(fc_isIE && fc_isWin && !fc_isOpera){
+				if(fc_isIE && fc_isWin && !fc_isOpera)
+				{
 					_object_ ='<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,0,0" width="0" height="0" id="captcha_audio" align="middle">';
 					_object_ += '<param name="allowScriptAccess" value="always" />';
 					_object_ += '<param name="quality" value="high" />';
@@ -71,14 +74,19 @@ var calledArgs = null;
 					_object_ += '<param name="allowFullScreen" value="false">';
 					_object_ += '<param name="bgcolor" value="#fffff" />';
 					_object_ += '</object>';
-				}else{
+				}
+				else
+				{
 					_object_ = '<embed src="'+_swfURL_+'" quality="high" wmode="window" allowFullScreen="false" bgcolor="#ffffff" width="0" height="0" name="captcha_audio" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />';
 				}
 
 				captchaXE = $('<div id="captcha_layer" style="position:fixed; top:0; left:0; width:100%; height:100%;display:none;z-index:10">').appendTo(document.body);
 
 				var top_left = 'margin:-105px 0 0 -105px; top:50%; left:50%;';
-				if(screen.width<480) { top_left = ''; }
+				if(screen.width<480) 
+				{ 
+					top_left = ''; 
+				}
 				var $div = $('<div style="z-index:1000;position:absolute; width:310px;' + top_left + ' background:#fff; border:3px solid #ccc;">'+
 								'<form method="post" action="">'+
 									'<div style="position:relative; margin:25px 20px 15px 20px">'+
@@ -119,14 +127,21 @@ var calledArgs = null;
 				captchaXE.exec = function(module, act, params, callback_func, response_tags, callback_func_arg, fo_obj) {
 					var doCheck = false;
 
-					$.each(captchaTargetAct || {}, function(key,val){ if (val == act){ doCheck = true; return false; } });
+					$.each(captchaTargetAct || {}, function(key,val){ 
+						if (val == act)
+						{ 
+							doCheck = true; return false; 
+						} 
+					});
 
-					if (doCheck) { /* captcha 를 사용하는 경우 */
+					if (doCheck) 
+					{ /* captcha 를 사용하는 경우 */
 
 						$('#captcha_layer form')
 						.submit(function(e){
 							e.preventDefault();
-							if(!$('#secret_text').val()){
+							if(!$('#secret_text').val())
+							{
 								$(this).find('input[type=text]').val('').focus();
 								return false;
 							}
@@ -137,7 +152,9 @@ var calledArgs = null;
 						params['captcha_action'] = 'setCaptchaSession';
 						params['mid'] = current_mid;
 						window.oldExecXml(module, act, params, captchaXE.show,new Array('error','message','about_captcha','captcha_reload','captcha_play','cmd_input','cmd_cancel'));
-					} else {
+					} 
+					else 
+					{
 						window.oldExecXml(module, act, params, callback_func, response_tags, callback_func_arg, fo_obj);
 					}
 
@@ -171,7 +188,8 @@ var calledArgs = null;
 		}
 
 		$(window).ready(function(){
-			if(!window.oldExecXml) {
+			if(!window.oldExecXml) 
+			{
 				window.oldExecXml = window.exec_xml;
 				window.exec_xml = xeCaptcha().exec;
 			}
